@@ -31,6 +31,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem binding.pry to debug
+  gem 'pry', '~> 0.14.0'
 end
 
 group :development do
@@ -40,6 +42,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  #Security: gem use to check security for app
+  gem 'brakeman', '~> 5.0'
+  #help to kill N+1 queries and unused eager loading.
+  gem 'bullet', '~> 6.1', '>= 6.1.4'
+  gem 'better_errors'
 end
 
 group :test do
@@ -52,3 +59,23 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem config for variables
+gem 'config'
+# config environment variable
+gem 'dotenv-rails'
+#redis
+gem 'redis'
+gem 'hiredis'
+#export file pdf
+# gem 'wicked_pdf'
+# gem 'wkhtmltopdf-binary'
+# Security: check for gem patches and updates
+gem 'bundler-audit', '~> 0.6.1'
+# font-awesome
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
+#This gem protects against typical web attacks. Should work for all Rack apps, including Rails.
+gem 'rack-protection', '~> 2.1'
+gem 'devise'
+gem 'pundit'
+gem 'carrierwave'
+gem 'annotate', '~> 3.1', '>= 3.1.1'

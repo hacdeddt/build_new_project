@@ -59,4 +59,31 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # bullet to check N+1 query
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+    Bullet.raise = true
+  end
+
+  #config.action_mailer.asset_host = 'http://member.create-cloud.local:3000' #show assets in mailer
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+
+  config.action_mailer.smtp_settings = {
+    :address            => ENV['MAIL_ADDRESS'] || 'smtp.gmail.com',
+    :port               => ENV['MAIL_PORT'] || 587,
+    :domain             => ENV['MAIL_DOMAIN'] || 'gmail.com',
+    :user_name          => ENV['MAIL_USERNAME'],
+    :password           => ENV['MAIL_PASSWORD'],
+    :authentication     => :plain,
+    :enable_starttls_auto => true
+  }
 end
